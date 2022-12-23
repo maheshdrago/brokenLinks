@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepawali SEO- Website Backlinks Checker</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@700&family=Poppins&display=swap');
+    
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    .accordion-item{
+        box-shadow: 0 1px 11px 0 rgb(181, 181, 181);
+        margin-bottom: 8px;
+        padding: 5px;
+    }
+    .main-wrapper{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 0 1px 11px 0 rgb(181, 181, 181);
+        overflow: auto;
+    }
+    .container{
+        margin-top: 20px !important ;
+        width: min-content;
+    }
+    .main-wrapper input {
+        border: none !important;
+        overflow: auto !important;
+        outline: none;
+        padding: 14px !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+    }
+    .btn-primary{
+        background-color: #3b8ffc;
+        border: 1px solid #3b8ffc;
+    }
+    .btn-primary:hover{
+        background-color: #4294ff;
+        border: 1px solid #4294ff;
+    }
+    
+    
+
+    .links{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .links a{
+        text-decoration: underline;
+        color: black;
+        margin-right: 16px;
+        font-size: 11px;
+    }
+
+    @media (max-width:700px){
+        .links {
+            display: none;
+        }
+        body{
+            margin-top: 9px;
+        }
+    }
+
+    .navbar-links {
+        height: 80%;
+        margin-left: 20vw;
+        width: min-content;
+    }
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    white-space: nowrap;
+    display: inline;
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
+
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links li:hover {
+    background-color: rgb(207, 206, 206);
+}
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+.td-tagline-text{
+    letter-spacing: 1.8px;
+    font-size: 12px;
+    font-family: serif;
+    color: #777;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    margin-top: 1px !important;
+}
+    .menu-tab,.counter-tab{
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .menu-tab button{
+        margin-right: 7px;
+        margin-bottom: 40px;
+    }
+    .accordion{
+        margin-bottom: 200px;
+    }
+    .unregistered-span{
+        padding: 3px;
+        border: 1px red solid;
+        color: white;
+        background-color: red;
+        border-radius: 4px
+    }
+    .registered-span{
+        padding: 3px;
+        border: 1px green solid;
+        color: white;
+        background-color: green;
+        border-radius: 4px
+    }
+    .horizontal{
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+        justify-content: space-between;
+    }
+    #select-inp{
+        display: none;
+    }
+
+    .spinner-border{
+        display: none;
+    }
+
+    .bi-check-circle{
+        color: 'green' !important;
+        font-size: 22px;
+    }
+    .bi-x-circle{
+        color: 'red' !important;
+        font-size: 22px;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+
+</style>
+<body>
+    <div class="header-div">
+        <div class="links">     
+            <p><a href="https://www.deepawaliseotips.com/about-us/">About us</a></p>
+            <p><a href="https://www.deepawaliseotips.com/digital-marketing-and-seo-consultancy-services-pavan-agrawal/">SEO Consultancy Services</a></p>
+            <p><a href="https://www.deepawaliseotips.com/privacy-policy/">Privacy Policy</a></p>
+            <p><a href="https://www.deepawaliseotips.com/disclaimer/">Disclaimer</a></p>
+            <p><a href="https://www.deepawaliseotips.com/terms-conditions/">Terms & Conditions</a></p>
+            <p><a href="https://www.deepawaliseotips.com/contact-us/">Contact Us</a></p>
+        </div>
+        <div class="title">
+            <center>
+                <h1 style="font-family: serif;font-size: 5vw;">SEO Pavan Agrawal</h1>
+                <span class="td-tagline-text">Remember Observe and React</span>
+            </center>
+            <hr>
+            
+        </div>
+        <nav class="navbar">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            
+
+            <div class="navbar-links">
+                <ul>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/">HOME</a>
+                    </li>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/category/start-a-blog/">START A BLOG</a>
+                    </li>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/category/hosting/">HOSTING</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/tools/">TOOLS [PAVAN AGRAWAL]</a>
+                    </li>
+                    <li>
+                        <a href="https://twittertrends.deepawaliseotips.com/">TWITTER TRENDS</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <hr>
+    <br>
+    <div class="container">
+        <div class="header-tab">
+            <h3>Website Brokenlinks Checker</h3>
+        </div>
+
+        <div class="main-wrapper">
+            <input id="url" contenteditable="true" style="width:900px;border:1px solid;overflow-y:scroll" placeholder="Enter URL"></input>    
+        </div>
+
+
+        <div class="menu-tab" id="tab">
+            <button class="btn btn-primary" type="button" id="load-btn" onclick="get_data()">Generate</button>
+        </div>
+        
+        <div class="row">
+            <table class="table table-bordered" id="tableExample1"></table>
+        </div>
+
+        <div class="main-wrapper" style="padding: 20px;">
+            <h3>
+                What is a Broken Link?
+            </h3>
+            <p>
+                A broken link is a web-page that can’t be found or accessed by a user, for various reasons. Web servers will often return an error message when a user tries to access a broken link. Broken links are also often known as “dead links” or “link rots.”
+            </p>
+            <br>
+            <h3>Examples of a broken link error code</h3>
+            <p>
+                <ul>
+                    Here are some examples of error codes that a web server may present for a broken link: <br><br>
+                    <li><b>404 Page Not Found</b>: the page/resource doesn’t exist on the server<br></li>
+                    <li><b>400 Bad Request</b>: the host server cannot understand the URL on your page<br></li>
+                    <li><b>Bad host</b>: Invalid host name: the server with that name doesn’t exist or is unreachable<br></li>
+                    <li><b>Bad URL</b>: Malformed URL (e.g. a missing bracket, extra slashes, wrong protocol, etc.)<br></li>
+                    <li><b>Bad Code</b>: Invalid HTTP response code: the server response violates HTTP spec<br></li>
+                    <li><b>Empty</b>: the host server returns “empty” responses with no content and no response code<br></li>
+                    <li><b>Timeout</b>: Timeout: HTTP requests constantly timed out during the link check<br></li>
+                    <li><b>Reset</b>: the host server drops connections. It is either misconfigured or too busy.<br></li>
+                </ul>
+            </p>
+            <h3>Reasons for broken links</h3>
+            <p>
+                <ul>
+                    <li>The website owner entered the incorrect URL (misspelled, mistyped, etc.).</li>
+                    <li>The URL structure of your site recently changed (permalinks) without a redirect and it’s causing a 404 error.</li>
+                    <li>The external site is no longer available, is offline, or has been permanently moved.</li>
+                    <li>Links to content (PDF, Google Doc, video, etc.) that has been moved or deleted.</li>
+                    <li>Broken elements within the page (HTML, CSS, Javascript, or CMS plugins interference).</li>
+                    <li>Firewall or geolocation restriction does not allow outside access.</li>    
+                </ul>
+            </p>
+            <h3>Why are Broken Links Important for SEO?</h3>
+            <p>
+                Broken links will affect your Google Search results, however, they won’t impact your overall SEO. We even did a check on Apple’s site and scanned 2000 URLs with 9 failed responses. That doesn’t mean that Apple will start losing their ranks, however, having too many broken links on a single page might indicate that a site is either neglected or abandoned. Google’s Search Quality Rating Guidelines also use broken links to determine the quality of a site, but as long as you’re constantly checking for broken links or fixing broken links when Google notifies you of a new issue detected on your site , you should be able to maintain a high quality site:
+            </p>
+            <h3>How to Find Broken Links on Your Website</h3>
+            <p>
+                The simplest and fastest way to see if you have any broken links is by generating report and see if there are any broken links on that page:Deepawali Website Brokenlinks tool to check broken links. <br><br>
+                <img src="https://drive.google.com/uc?export=view&id=1RyF_mgGIujtR9IIxcPOW38DjBle1iLDa" alt="not found" width="100%">
+                <img src="https://drive.google.com/uc?export=view&id=1pudpKvcdVs-krznGFE2ZKA7uXkvwRf5Y" alt="not found" width="100%">
+                If you have hundreds of pages or posts on your site, you can use a tool like Deepawali Brokenlink Checker to crawl all of your pages to identify broken links – or download a plugin for your CMS platform that can check <these class="br"></these>
+            </p>
+        </div>
+        
+
+    </div>
+    
+</body>
+<script>
+    let flag = false;
+    let data;
+
+
+    const get_data = async ()=>{
+        const url = document.getElementById('url').value;
+        
+        document.getElementById('load-btn').disabled = true;
+        document.getElementById('load-btn').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...'
+        await fetch("https://deepawali-api-test.up.railway.app/getBrokenlinks", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "url":url
+            }),
+        })
+        .then(
+            response => response.json()
+        )
+        .then(response_data=>{
+            document.getElementById('load-btn').disabled = false;
+            document.getElementById('load-btn').innerHTML = 'Generate'
+            data = response_data
+            set_data(data['urls'])
+        }
+        )
+
+    }
+
+    const get_response = async (url, status_id, response_id, id) => {
+
+        document.getElementById(status_id).style.display = 'block';
+        document.getElementById(id).style.display = 'block';
+
+        const response = fetch("https://deepawali-api-test.up.railway.app/getResponseCode",{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "url":url
+            })})
+        .then(
+            response => response.json()
+        )
+         .then(response_data=>{
+            if(response_data['response_code']==200){
+                document.getElementById(status_id).innerHTML = '<i class="bi bi-check-circle text-success"></i>';
+            }
+            else{
+                document.getElementById(status_id).innerHTML = '<i class="bi bi-x-circle text-warning"></i>';
+            }
+            //document.getElementById(response_id).innerHTML = response_data['response_code'];
+        })
+
+    }
+
+
+    const set_data = urls => {
+        console.log(urls.length)
+        var items_1 = urls.map((ele,idx)=>{
+            
+            return (`<tr>
+                <td>${idx+1}</td>
+                <td><a href=${ele}>${ele}</a></td>
+                <td id="${'spinner-status-'+idx+1}">
+                    <div class="spinner-border" id="${'spinner-'+idx+1}" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </td>
+            </tr>`)
+            }).join('')
+
+        document.getElementById('tableExample1').innerHTML = `<tbody>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Status</th>
+                </tr>
+                ${items_1}
+            </tbody>`;
+        
+        set_status(urls)
+    }
+
+    const set_status = urls => {
+        urls.map((url, idx) => {
+            get_response(url,'spinner-status-'+idx+1,'spinner-response-'+idx+1, 'spinner-'+idx+1)
+        })
+    }
+
+</script>
+
+<script src="https://kit.fontawesome.com/411329c929.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+</html>
