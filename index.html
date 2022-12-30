@@ -79,13 +79,16 @@
     .navbar-links {
         height: 80%;
         margin-left: 20vw;
-        width: min-content;
+        width: 70%;
     }
 
 .navbar-links ul {
     display: flex;
     margin: 0;
     padding: 0;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 8px;
 }
 
 .navbar-links li {
@@ -103,7 +106,6 @@
 
 
 .toggle-button {
-    position: absolute;
     top: .75rem;
     right: 1rem;
     display: none;
@@ -127,7 +129,8 @@
     }
 
     .toggle-button {
-        display: flex;
+        display: block;
+        float: right;
     }
 
     .navbar-links {
@@ -225,54 +228,66 @@
 
 </style>
 <body>
-    <div class="header-div">
-        <div class="links">     
-            <p><a href="https://www.deepawaliseotips.com/about-us/">About us</a></p>
-            <p><a href="https://www.deepawaliseotips.com/digital-marketing-and-seo-consultancy-services-pavan-agrawal/">SEO Consultancy Services</a></p>
-            <p><a href="https://www.deepawaliseotips.com/privacy-policy/">Privacy Policy</a></p>
-            <p><a href="https://www.deepawaliseotips.com/disclaimer/">Disclaimer</a></p>
-            <p><a href="https://www.deepawaliseotips.com/terms-conditions/">Terms & Conditions</a></p>
-            <p><a href="https://www.deepawaliseotips.com/contact-us/">Contact Us</a></p>
-        </div>
-        <div class="title">
-            <center>
-                <h1 style="font-family: serif;font-size: 5vw;">SEO Pavan Agrawal</h1>
-                <span class="td-tagline-text">Remember Observe and React</span>
-            </center>
-            <hr>
-            
-        </div>
-        <nav class="navbar">
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-            
 
-            <div class="navbar-links">
-                <ul>
-                    <li>
-                        <a href="https://www.deepawaliseotips.com/">HOME</a>
-                    </li>
-                    <li>
-                        <a href="https://www.deepawaliseotips.com/category/start-a-blog/">START A BLOG</a>
-                    </li>
-                    <li>
-                        <a href="https://www.deepawaliseotips.com/category/hosting/">HOSTING</a>
-                    </li>
-                    
-                    <li>
-                        <a href="https://www.deepawaliseotips.com/tools/">TOOLS [PAVAN AGRAWAL]</a>
-                    </li>
-                    <li>
-                        <a href="https://twittertrends.deepawaliseotips.com/">TWITTER TRENDS</a>
-                    </li>
-                </ul>
+    <div class="main-wrapper" style="overflow: hidden;">
+        <div class="header-div">
+            <div class="links">     
+                <p><a href="https://www.deepawaliseotips.com/about-us/">About us</a></p>
+                <p><a href="https://www.deepawaliseotips.com/digital-marketing-and-seo-consultancy-services-pavan-agrawal/">SEO Consultancy Services</a></p>
+                <p><a href="https://www.deepawaliseotips.com/privacy-policy/">Privacy Policy</a></p>
+                <p><a href="https://www.deepawaliseotips.com/disclaimer/">Disclaimer</a></p>
+                <p><a href="https://www.deepawaliseotips.com/terms-conditions/">Terms & Conditions</a></p>
+                <p><a href="https://www.deepawaliseotips.com/contact-us/">Contact Us</a></p>
             </div>
-        </nav>
-    </div>
-    <hr>
+            <div class="title">
+                <center>
+                    <h1 style="font-family: serif;font-size: 5vw;">SEO Pavan Agrawal</h1>
+                    <span class="td-tagline-text">Remember Observe and React</span>
+                </center>
+                <hr>
+                <a href="#" class="toggle-button" style="float: right;">
+                    <span><i class="bi bi-list"></i></span>
+                </a>
+                <br>
+            </div>
+            <nav class="navbar">
+                
+    
+                <div class="navbar-links">
+                    <ul>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/"><b>HOME</b></a>
+                        </li>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/category/start-a-blog/"><b>START A BLOG</b></a>
+                        </li>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/category/hosting/"><b>HOSTING</b></a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/tools/"><b>TOOLS [PAVAN AGRAWAL]</b></a>
+                        </li>
+                        <li>
+                            <a href="https://twittertrends.deepawaliseotips.com/"><b>TWITTER TRENDS</b></a>
+                        </li>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/schema-generator-tool.html"><b>SCHEMA GENERATOR</b></a>
+                        </li>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/domain-age.html/"><b>DOMAIN AGE</b></a>
+                        </li>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/keyword-generator.html/"><b>KEYWORD RESEARCH</b></a>
+                        </li>
+                        <li>
+                            <a href="https://www.deepawaliseotips.com/related-keywords.html/"><b>RELATED KEYWORDS</b></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        </div>
     <br>
     <div class="container">
         <div class="header-tab">
@@ -346,13 +361,19 @@
     let flag = false;
     let data;
 
+    const toggleButton = document.getElementsByClassName('toggle-button')[0]
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+        toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+    })
+
 
     const get_data = async ()=>{
         const url = document.getElementById('url').value;
         
         document.getElementById('load-btn').disabled = true;
         document.getElementById('load-btn').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...'
-        await fetch("https://deepawali-api-test.up.railway.app/getBrokenlinks", {
+        await fetch("https://plankton-app-5xteo.ondigitalocean.app/getBrokenlinks", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -377,7 +398,7 @@
         document.getElementById(status_id).style.display = 'block';
         document.getElementById(id).style.display = 'block';
 
-        const response = fetch("https://deepawali-api-test.up.railway.app/getResponseCode",{
+        const response = fetch("https://plankton-app-5xteo.ondigitalocean.app/getResponseCode",{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
