@@ -32,7 +32,7 @@
     }
     .container{
         margin-top: 20px !important ;
-        width: min-content;
+        width: 65%;
     }
     .main-wrapper input {
         border: none !important;
@@ -221,6 +221,7 @@
         font-size: 22px;
     }
 
+
     a{
         text-decoration: none;
     }
@@ -303,8 +304,8 @@
             <button class="btn btn-primary" type="button" id="load-btn" onclick="get_data()">Generate</button>
         </div>
         
-        <div class="row">
-            <table class="table table-bordered" id="tableExample1"></table>
+        <div class="row" style="width: 100%; overflow-x:scroll">
+            <table class="table table-bordered" id="tableExample1" style="width:100%"></table>
         </div>
 
         <div class="main-wrapper" style="padding: 20px;">
@@ -373,7 +374,7 @@
         
         document.getElementById('load-btn').disabled = true;
         document.getElementById('load-btn').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...'
-        await fetch("https://plankton-app-5xteo.ondigitalocean.app/getBrokenlinks", {
+        await fetch("https://deepawali-api-test.up.railway.app/getBrokenlinks", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -421,25 +422,28 @@
 
 
     const set_data = urls => {
-        console.log(urls.length)
         var items_1 = urls.map((ele,idx)=>{
             
-            return (`<tr>
-                <td>${idx+1}</td>
-                <td><a href=${ele}>${ele}</a></td>
-                <td id="${'spinner-status-'+idx+1}">
+            return (`<tr class="d-flex">
+                <td class="col-1">${idx+1}</td>
+                <td class="col-4" style="overflow-wrap: break-word;"><a href=${ele.url}>${ele.url}</a></td>
+                <td class="col-4" style="overflow-wrap: break-word;">${ele.text}</td>
+                <td id="${'spinner-status-'+idx+1}" class="col-1">
                     <div class="spinner-border" id="${'spinner-'+idx+1}" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </td>
+                <td class="col-2">${ele.internal}</td>
             </tr>`)
             }).join('')
 
         document.getElementById('tableExample1').innerHTML = `<tbody>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">URL</th>
-                    <th scope="col">Status</th>
+                <tr class="d-flex">
+                    <th scope="col" class="col-1">No.</th>
+                    <th scope="col" class="col-4" >URL</th>
+                    <th scope='col' class="col-4">Link Text</th>
+                    <th scope="col" class="col-1">Status</th>
+                    <th scope='col' class="col-2">Internal Link</th>
                 </tr>
                 ${items_1}
             </tbody>`;
@@ -449,7 +453,7 @@
 
     const set_status = urls => {
         urls.map((url, idx) => {
-            get_response(url,'spinner-status-'+idx+1,'spinner-response-'+idx+1, 'spinner-'+idx+1)
+            get_response(url['url'],'spinner-status-'+idx+1,'spinner-response-'+idx+1, 'spinner-'+idx+1)
         })
     }
 
