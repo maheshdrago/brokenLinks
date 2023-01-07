@@ -441,13 +441,14 @@
             document.getElementById('load-btn').disabled = false;
             document.getElementById('load-btn').innerHTML = 'Generate'
             data = response_data
+            console.log(data)
             document.getElementById('total_links').innerHTML = 'Total Links : '+data['total_cnt']
-            document.getElementById('internal_links').innerHTML = 'Total Links : '+data['internalLinks']
-            document.getElementById('external_links').innerHTML = 'Total Links : '+data['externalLinks']
-            document.getElementById('dofollow_links').innerHTML = 'Total Links : '+data['do_follow']
-            document.getElementById('nofollow_links').innerHTML = 'Total Links : '+data['no_follow']
+            document.getElementById('internal_links').innerHTML = 'Internal Links : '+data['internalLinks']
+            document.getElementById('external_links').innerHTML = 'External Links : '+data['externalLinks']
+            document.getElementById('dofollow_links').innerHTML = 'DoFollow Links : '+data['do_follow']
+            document.getElementById('nofollow_links').innerHTML = 'NoFollow Links : '+data['no_follow']
             
-            set_data(data['urls'])
+            //set_data(data['urls'])
 
         }
         )
