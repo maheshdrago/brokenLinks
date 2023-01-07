@@ -330,7 +330,7 @@
             <button class="btn btn-primary" type="button" id="load-btn" onclick="get_data()">Generate</button>
         </div>
         
-        <div class="meta-data-container">
+        <div class="meta-data-container" id="meta" style="display: none;">
             <span class="meta-data-span" id="total_links">Total Links : 0</span>
             <span class="meta-data-span" id="broken_links">Broken Links : 0</span>
             <span class="meta-data-span" id="internal_links">Internal Links : 0</span>
@@ -424,6 +424,7 @@
         const url = document.getElementById('url').value;
         broken_links_cnt = 0;
         document.getElementById('broken_links').innerHTML = 'Broken Links : 0'
+        document.getElementById('meta').style.display = 'block';
         document.getElementById('load-btn').disabled = true;
         document.getElementById('load-btn').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...'
         await fetch("https://deepawali-api-test.up.railway.app/getBrokenlinks", {
